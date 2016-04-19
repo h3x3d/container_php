@@ -1,0 +1,18 @@
+{
+    "name": "h3x3d/container",
+    "type": "library",
+    "keywords": ["dependency injection", "container"],
+    "description": "Simple DI Container",
+    "authors": [
+      {
+        "name": "h3x3d",
+        "email": "h3x3d@ya.ru"
+      }
+    ],
+    "autoload": {
+      "psr-0": { "Hexed": "src/" }
+    },
+    "require": {
+        "php": ">=5.4.0"
+    }
+}
