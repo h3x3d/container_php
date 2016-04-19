@@ -4,6 +4,8 @@ namespace H3x3d;
 
 class Container
 {
+    private static $instance = null;
+
     private $services = [];
     private $instances = [];
 
@@ -41,5 +43,14 @@ class Container
 
             return call_user_func_array($this->services[$name], $args);
         };
+    }
+
+    public static function instance()
+    {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
     }
 }
