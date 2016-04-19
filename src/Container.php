@@ -21,8 +21,8 @@ class Container
         $args = func_get_args();
         array_shift($args);
 
-        if (!$this->services[$name]) {
-            throw new Exception("Undefined service '$name'");
+        if (!isset($this->services[$name])) {
+            throw new \Exception("Undefined service '$name'");
         }
 
         if (empty($args)) {
