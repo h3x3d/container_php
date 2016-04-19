@@ -14,7 +14,7 @@ $cont->set('test1', function ($c, $test) {
     return $test;
 });
 
-$cont->get('test1', ['I\'m test variable']);
+$cont->get('test1', 'I\'m test variable');
 
 $f = $cont->factory('test1');
 

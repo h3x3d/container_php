@@ -16,8 +16,11 @@ class Container
         return $factory;
     }
 
-    public function get($name, $args = [])
+    public function get($name)
     {
+        $args = func_get_args();
+        array_shift($args);
+
         if (!$this->services[$name]) {
             throw new Exception("Undefined service '$name'");
         }
