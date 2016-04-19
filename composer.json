@@ -10,7 +10,7 @@
       }
     ],
     "autoload": {
-      "psr-0": { "Container": "src/" }
+      "psr-0": { "H3x3d": "src/" }
     },
     "require": {
         "php": ">=5.3.0"
