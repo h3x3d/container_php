@@ -9,32 +9,37 @@ class Container
 
     public function set($name, $factory)
     {
-        $services[$name] = $factory;
+        $this->services[$name] = $factory;
 
         return $factory;
     }
 
     public function get($name, $args = [])
     {
-        if (!$services[$name]) {
+        if (!$this->services[$name]) {
             throw new Exception("Undefined service '$name'");
         }
 
         if (empty($args)) {
-            if (!isset($instances[$name])) {
-                $instances[$name] = $services[$name]($this);
+            if (!isset($this->instances[$name])) {
+                $this->instances[$name] = $this->services[$name]($this);
             }
 
-            return $instances[$name];
+            return $this->instances[$name];
         }
 
         array_unshift($args, $this);
 
-        return call_user_func_array($instances[$name], $args);
+        return call_user_func_array($this->services[$name], $args);
     }
 
     public function factory($name)
     {
-        return $services[$name];
+        return function () use ($name) {
+            $args = func_get_args();
+            array_unshift($args, $this);
+
+            return call_user_func_array($this->services[$name], $args);
+        };
     }
 }
